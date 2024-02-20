@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import MainLayout from "./layout/MainLayout";
 
 const App: React.FC = () => {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -13,10 +14,12 @@ const App: React.FC = () => {
         path="/"
         element={!user ? <Login /> : <Navigate to="/dashboard" />}
       />
-      <Route
-        path="/dashboard"
-        element={user ? <Dashboard /> : <Navigate to="/" />}
-      />
+      <Route element={<MainLayout />}>
+        <Route
+          path="/dashboard"
+          element={user ? <Dashboard /> : <Navigate to="/" />}
+        />
+      </Route>
     </Routes>
   );
 };
