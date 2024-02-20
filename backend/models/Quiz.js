@@ -12,12 +12,22 @@ const quizSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
-        options: [
-          {
-            optionText: String,
-            isCorrect: Boolean,
+        options: {
+          type: [
+            {
+              optionText: {
+                type: String,
+                required: true,
+              },
+            },
+          ],
+          validate: {
+            validator: (value) => {
+              return value.length === 4;
+            },
+            message: "A question must have exactly 4 options.",
           },
-        ],
+        },
       },
     ],
   },
