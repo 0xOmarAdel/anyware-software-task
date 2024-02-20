@@ -14,11 +14,8 @@ const App: React.FC = () => {
         path="/"
         element={!user ? <Login /> : <Navigate to="/dashboard" />}
       />
-      <Route element={<MainLayout />}>
-        <Route
-          path="/dashboard"
-          element={user ? <Dashboard /> : <Navigate to="/" />}
-        />
+      <Route element={user ? <MainLayout /> : <Navigate to="/" />}>
+        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     </Routes>
   );
