@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const jobSchema = new mongoose.Schema(
+const quizSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -24,4 +24,4 @@ const jobSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Job", jobSchema);
+module.exports = mongoose.model("Quiz", quizSchema);
