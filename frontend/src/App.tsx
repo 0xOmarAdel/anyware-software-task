@@ -1,10 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { RootState } from "./store/store";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 
 const App: React.FC = () => {
-  const user = true;
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <Routes>
