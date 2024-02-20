@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       colors: {
-        primary: "#5cc0b3",
+        primary: "#48a296",
       },
       backgroundImage: {
         "primary-gradient": "linear-gradient(to bottom, #12567b, #398593)",
