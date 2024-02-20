@@ -45,7 +45,7 @@ const Login = () => {
               onChange={setPassword}
             />
           </div>
-          <Button text="Login" type="submit" />
+          <Button text={t("login")} type="submit" />
         </form>
       </Card>
     </div>
