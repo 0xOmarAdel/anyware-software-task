@@ -10,7 +10,7 @@ const Button: React.FC<Props> = (props) => {
     <button
       disabled={props.disabled}
       type={props.type || "button"}
-      className="py-1.5 bg-primary text-gray-100 rounded-md"
+      className="py-1.5 bg-primary text-gray-100 rounded-md capitalize font-medium"
       onClick={props.onClick}
     >
       <span className="dark:text-textLighter">{props.text}</span>
