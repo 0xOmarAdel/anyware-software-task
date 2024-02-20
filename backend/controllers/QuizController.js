@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const { NotFoundError, BadRequestError } = require("../errors");
+const { NotFoundError } = require("../errors");
 const Quiz = require("../models/Quiz");
 
 const getAllQuizzes = async (req, res) => {
@@ -18,9 +18,33 @@ const getQuiz = async (req, res) => {
   res.status(StatusCodes.OK).json({ quiz });
 };
 
-const createQuiz = async (req, res) => {};
+const createQuiz = async (req, res) => {
+  const { title, questions } = req.body;
 
-const updateQuiz = async (req, res) => {};
+  const newQuiz = new Quiz({
+    title,
+    questions,
+  });
+
+  const savedQuiz = await newQuiz.save();
+
+  res.status(StatusCodes.CREATED).json(savedQuiz);
+};
+
+const updateQuiz = async (req, res) => {
+  const quizId = req.params.id;
+  const { title, questions } = req.body;
+
+  const updatedQuiz = await Quiz.findOneAndUpdate(
+    { _id: quizId },
+    { title, questions },
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedQuiz) throw new NotFoundError(`No quiz with id ${quizId}`);
+
+  res.status(StatusCodes.OK).json(updatedQuiz);
+};
 
 const deleteQuiz = async (req, res) => {
   const quizId = req.params.id;

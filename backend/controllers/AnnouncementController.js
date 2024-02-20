@@ -1,5 +1,5 @@
 const { StatusCodes } = require("http-status-codes");
-const { NotFoundError, BadRequestError } = require("../errors");
+const { NotFoundError } = require("../errors");
 const Announcement = require("../models/Announcement");
 
 const getAllAnnouncements = async (req, res) => {
@@ -21,9 +21,30 @@ const getAnnouncement = async (req, res) => {
   res.status(StatusCodes.OK).json({ announcement });
 };
 
-const createAnnouncement = async (req, res) => {};
+const createAnnouncement = async (req, res) => {
+  const { text } = req.body;
 
-const updateAnnouncement = async (req, res) => {};
+  const newAnnouncement = new Announcement({
+    text,
+  });
+
+  const savedAnnouncement = await newAnnouncement.save();
+
+  res.status(StatusCodes.CREATED).json(savedAnnouncement);
+};
+
+const updateAnnouncement = async (req, res) => {
+  const announcementId = req.params.id;
+  const { text } = req.body;
+
+  const updatedAnnouncement = await Announcement.findOneAndUpdate(
+    { _id: announcementId },
+    { text },
+    { new: true, runValidators: true }
+  );
+
+  res.status(StatusCodes.OK).json(updatedAnnouncement);
+};
 
 const deleteAnnouncement = async (req, res) => {
   const announcementId = req.params.id;
