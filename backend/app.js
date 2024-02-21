@@ -14,7 +14,6 @@ const connectDB = require("./db/connect");
 // routers
 const AnnouncementRouter = require("./routes/AnnouncementRoutes");
 const quizRouter = require("./routes/QuizRoutes");
-const newRouter = require("./routes/New");
 
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
@@ -31,7 +30,6 @@ app.use(xss());
 // routes
 app.use("/api/v1/announcement", AnnouncementRouter);
 app.use("/api/v1/quiz", quizRouter);
-app.use("/api/v1/new", newRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
