@@ -4,14 +4,14 @@ import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import { FaHourglassHalf } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
-import QuizType from "../types/QuizType";
+import QuizType from "../../types/QuizType";
 
 type Props = {
   quiz: QuizType;
   lastElement: boolean;
 };
 
-const SingleQuiz: React.FC<Props> = ({ quiz, lastElement }) => {
+const SingleNewQuiz: React.FC<Props> = ({ quiz, lastElement }) => {
   const [t] = useTranslation();
 
   return (
@@ -40,4 +40,4 @@ const SingleQuiz: React.FC<Props> = ({ quiz, lastElement }) => {
   );
 };
 
-export default SingleQuiz;
+export default SingleNewQuiz;

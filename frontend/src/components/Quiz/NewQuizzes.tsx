@@ -1,8 +1,8 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import QuizList from "./QuizList";
 import { useTranslation } from "react-i18next";
-import QuizType from "../types/QuizType";
+import QuizType from "../../types/QuizType";
+import SingleQuiz from "./SingleNewQuiz";
 
 type Props = {
   loading: boolean;
@@ -27,7 +27,15 @@ const NewQuizzes: React.FC<Props> = ({ loading, quizzes }) => {
         {t("newQuizzes")}
       </Typography>
       {!loading && quizzes ? (
-        <QuizList quizzes={quizzes} />
+        <>
+          {quizzes.map((quiz, index) => (
+            <SingleQuiz
+              key={quiz._id}
+              quiz={quiz}
+              lastElement={index + 1 === quizzes.length}
+            />
+          ))}
+        </>
       ) : (
         <p> {t("loading")}</p>
       )}

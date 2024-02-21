@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { useAxios } from "hookverse";
-import AnnouncementType from "../types/AnnouncementType";
+import AnnouncementType from "../../types/AnnouncementType";
 import { useTranslation } from "react-i18next";
 
 type Props = {

@@ -1,6 +1,6 @@
 import Timeline from "@mui/lab/Timeline";
 import SingleAnnouncement from "./SingleAnnouncement";
-import AnnouncementType from "../types/AnnouncementType";
+import AnnouncementType from "../../types/AnnouncementType";
 
 type Props = {
   announcements: AnnouncementType[];

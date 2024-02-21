@@ -1,6 +1,6 @@
-import AnnouncementsList from "../components/AnnouncementsList";
+import AnnouncementsList from "../components/Announcement/AnnouncementsList";
 import ExamsTips from "../components/ExamsTips";
-import NewQuizzes from "../components/NewQuizzes";
+import NewQuizzes from "../components/Quiz/NewQuizzes";
 import { useAxios } from "hookverse";
 import { useEffect, useState } from "react";
 import AnnouncementType from "../types/AnnouncementType";

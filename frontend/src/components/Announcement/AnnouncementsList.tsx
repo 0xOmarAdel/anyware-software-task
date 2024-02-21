@@ -1,7 +1,7 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import AnnouncementsTimeline from "./AnnouncementsTimeline";
-import AnnouncementType from "../types/AnnouncementType";
+import AnnouncementType from "../../types/AnnouncementType";
 import { useTranslation } from "react-i18next";
 
 type Props = {

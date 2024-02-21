@@ -1,5 +1,5 @@
 import { GoPencil } from "react-icons/go";
-import AnnouncementType from "../types/AnnouncementType";
+import AnnouncementType from "../../types/AnnouncementType";
 
 type Props = {
   announcement: AnnouncementType;

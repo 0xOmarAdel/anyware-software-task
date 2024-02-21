@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
-import AnnouncementForm from "../components/AnnouncementForm";
-import AnnouncementsList from "../components/AnnouncementsList";
+import AnnouncementForm from "../components/Announcement/AnnouncementForm";
+import AnnouncementsList from "../components/Announcement/AnnouncementsList";
 import { useAxios } from "hookverse";
 import { useCallback, useEffect, useState } from "react";
 import AnnouncementType from "../types/AnnouncementType";

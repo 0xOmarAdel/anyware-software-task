@@ -4,7 +4,7 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
-import AnnouncementType from "../types/AnnouncementType";
+import AnnouncementType from "../../types/AnnouncementType";
 import AnnouncementDeleteButton from "./AnnouncementDeleteButton";
 import AnnouncementUpdateButton from "./AnnouncementUpdateButton";
 

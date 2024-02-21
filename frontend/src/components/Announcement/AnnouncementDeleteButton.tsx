@@ -1,7 +1,7 @@
 import { FiTrash2 } from "react-icons/fi";
 import { useEffect } from "react";
 import { useAxios } from "hookverse";
-import AnnouncementType from "../types/AnnouncementType";
+import AnnouncementType from "../../types/AnnouncementType";
 
 type Props = {
   id: AnnouncementType["_id"];
