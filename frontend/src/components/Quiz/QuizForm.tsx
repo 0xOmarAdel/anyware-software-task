@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useAxios } from "hookverse";
 import QuizType from "../../types/QuizType";
+import { useTranslation } from "react-i18next";
 
 type Option = {
   optionText: string;
@@ -40,6 +41,8 @@ const QuizForm: React.FC<Props> = ({
   addQuiz,
   updateQuiz,
 }) => {
+  const [t] = useTranslation();
+
   const [quizTitle, setQuizTitle] = useState<string>("");
   const [questions, setQuestions] = useState<Question[]>([defaultQuestion]);
 
@@ -134,6 +137,9 @@ const QuizForm: React.FC<Props> = ({
     } else {
       await createQuiz();
     }
+
+    setQuizTitle("");
+    setQuestions([defaultQuestion]);
   };
 
   return (
@@ -151,7 +157,7 @@ const QuizForm: React.FC<Props> = ({
         component="h5"
         sx={{ fontWeight: "medium", textTransform: "capitalize" }}
       >
-        New Quiz
+        {selectedQuiz ? t("updateQuiz") : t("newQuiz")}
       </Typography>
       <form
         onSubmit={submitHandler}
@@ -209,11 +215,20 @@ const QuizForm: React.FC<Props> = ({
             </>
           ))}
           <Button variant="contained" onClick={handleAddQuestion} fullWidth>
-            Add Question
+            {t("addQuestion")}
           </Button>
           <Button variant="contained" type="submit" fullWidth>
-            Submit
+            {t("submit")}
           </Button>
+          {selectedQuiz && (
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => setSelectedQuiz(null)}
+            >
+              {t("cancel")}
+            </Button>
+          )}
         </Box>
       </form>
     </Paper>

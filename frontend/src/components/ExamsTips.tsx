@@ -4,8 +4,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import examsImage from "../assets/exams.svg";
+import { useTranslation } from "react-i18next";
 
 const ExamsTips = () => {
+  const [t] = useTranslation();
+
   return (
     <Paper variant="outlined" sx={{ borderRadius: "10px" }}>
       <Grid container spacing={2} sx={{ width: "100%", margin: 0 }}>
@@ -16,18 +19,17 @@ const ExamsTips = () => {
             className="gradient-text"
             sx={{ fontWeight: 700, textTransform: "uppercase" }}
           >
-            exams time
+            {t("exams")}
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
             <Typography variant="subtitle1" component="p">
-              Here we are, Are you ready to fight? Don't worry, we prepared some
-              tips to be ready for your exams.
+              {t("examsDesc")}
             </Typography>
             <Typography variant="body2" component="p">
-              Nothing happens until something moves - Albert Einstein
+              {t("examsQuote")}
             </Typography>
             <Button variant="contained" sx={{ width: "fit-content" }}>
-              View exams tips
+              {t("examsButtonText")}
             </Button>
           </Box>
         </Grid>

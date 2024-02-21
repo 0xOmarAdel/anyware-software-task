@@ -2,6 +2,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import SingleQuiz from "../Quiz/SingleQuiz";
 import QuizType from "../../types/QuizType";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   loading: boolean;
@@ -16,6 +17,8 @@ const QuizzesList: React.FC<Props> = ({
   deleteQuiz,
   setSelectedQuiz,
 }) => {
+  const [t] = useTranslation();
+
   return (
     <Paper
       variant="outlined"
@@ -28,10 +31,9 @@ const QuizzesList: React.FC<Props> = ({
       }}
     >
       <Typography variant="h5" component="h3" sx={{ fontWeight: 500 }}>
-        Quizzes
+        {t("quizzes")}
       </Typography>
-      {!loading &&
-        quizzes &&
+      {!loading && quizzes ? (
         quizzes.map((quiz) => (
           <SingleQuiz
             key={quiz._id}
@@ -39,7 +41,10 @@ const QuizzesList: React.FC<Props> = ({
             deleteQuiz={deleteQuiz}
             setSelectedQuiz={setSelectedQuiz}
           />
-        ))}
+        ))
+      ) : (
+        <p> {t("loading")}</p>
+      )}
     </Paper>
   );
 };

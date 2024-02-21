@@ -2,6 +2,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import AnnouncementsTimeline from "./AnnouncementsTimeline";
 import AnnouncementType from "../types/AnnouncementType";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   loading: boolean;
@@ -20,6 +21,8 @@ const AnnouncementsList: React.FC<Props> = ({
   setSelectedAnnouncement,
   displayActions,
 }) => {
+  const [t] = useTranslation();
+
   return (
     <Paper
       variant="outlined"
@@ -32,7 +35,7 @@ const AnnouncementsList: React.FC<Props> = ({
       }}
     >
       <Typography variant="h5" component="h3" sx={{ fontWeight: 500 }}>
-        Announcements
+        {t("announcements")}
       </Typography>
       {!loading && announcements ? (
         <AnnouncementsTimeline
@@ -42,7 +45,7 @@ const AnnouncementsList: React.FC<Props> = ({
           displayActions={displayActions}
         />
       ) : (
-        <p>Loading...</p>
+        <p> {t("loading")}</p>
       )}
     </Paper>
   );

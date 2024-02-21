@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
 import { useAxios } from "hookverse";
 import AnnouncementType from "../types/AnnouncementType";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   selectedAnnouncement: AnnouncementType | null;
@@ -25,6 +26,8 @@ const AnnouncementForm: React.FC<Props> = ({
   addAnnouncement,
   updateAnnouncement,
 }) => {
+  const [t] = useTranslation();
+
   const [text, setText] = useState("");
 
   useEffect(() => {
@@ -85,7 +88,7 @@ const AnnouncementForm: React.FC<Props> = ({
         component="h5"
         sx={{ fontWeight: "medium", textTransform: "capitalize" }}
       >
-        {selectedAnnouncement ? "Update Announcement" : "New Announcement"}
+        {selectedAnnouncement ? t("updateAnnouncement") : t("newAnnouncement")}
       </Typography>
       <form
         onSubmit={submitHandler}
@@ -104,7 +107,7 @@ const AnnouncementForm: React.FC<Props> = ({
             sx={{ flexGrow: 1, width: "250px" }}
           />
           <Button variant="contained" type="submit" fullWidth>
-            Submit
+            {t("submit")}
           </Button>
           {selectedAnnouncement && (
             <Button
@@ -112,7 +115,7 @@ const AnnouncementForm: React.FC<Props> = ({
               fullWidth
               onClick={() => setSelectedAnnouncement(null)}
             >
-              Cancel
+              {t("cancel")}
             </Button>
           )}
         </Box>

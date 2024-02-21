@@ -3,8 +3,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import { FaHourglassHalf } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const SingleQuiz = () => {
+  const [t] = useTranslation();
+
   return (
     <>
       <Box
@@ -20,18 +23,11 @@ const SingleQuiz = () => {
           style={{ transform: "scale(1.2)", color: "#48a296" }}
         />
         <Typography variant="subtitle1" component="h3" sx={{ fontWeight: 500 }}>
-          Quiz Title
+          {t("quizTitle")}
         </Typography>
       </Box>
-      <Typography
-        variant="subtitle2"
-        component="h3"
-        sx={{ marginTop: "0.5rem", fontWeight: 500 }}
-      >
-        Topic: Quiz Topic
-      </Typography>
       <Button variant="outlined" sx={{ marginTop: "0.5rem" }} fullWidth>
-        start quiz
+        {t("startQuiz")}
       </Button>
       <Divider sx={{ height: "1rem" }} />
     </>

@@ -15,7 +15,6 @@ type Props = {
 };
 
 const SingleQuiz: React.FC<Props> = ({ quiz, deleteQuiz, setSelectedQuiz }) => {
-  console.log(quiz);
   return (
     <Accordion sx={{ boxShadow: "none" }}>
       <AccordionSummary

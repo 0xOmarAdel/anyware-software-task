@@ -6,8 +6,12 @@ import SidebarLink from "./SidebarLink";
 import { IoMdExit } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/slices/authSlice";
+import { useTranslation } from "react-i18next";
+import Stack from "@mui/material/Stack";
 
 const Sidebar = () => {
+  const [t, i18n] = useTranslation();
+
   const dispatch = useDispatch();
 
   const logoutHandler = () => {
@@ -51,11 +55,19 @@ const Sidebar = () => {
               style={{ width: "100%" }}
             >
               <IoMdExit style={{ fontSize: "1.5rem" }} />
-              Logout
+              {t("logout")}
             </button>
           </li>
         </ul>
       </nav>
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{ marginTop: "1rem", paddingX: "2.5rem", color: "white" }}
+      >
+        <button onClick={() => i18n.changeLanguage("en")}>English</button>
+        <button onClick={() => i18n.changeLanguage("ar")}>Arabic</button>
+      </Stack>
     </Paper>
   );
 };

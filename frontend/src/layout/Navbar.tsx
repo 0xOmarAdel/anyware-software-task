@@ -4,8 +4,11 @@ import { RootState } from "../store/store";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const [t] = useTranslation();
+
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
@@ -33,7 +36,7 @@ const Navbar = () => {
             fontSize: "1.875rem",
           }}
         >
-          Welcome {user},
+          {t("welcome")} {user},
         </Typography>
         <Avatar />
       </Stack>
