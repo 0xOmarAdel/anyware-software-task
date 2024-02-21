@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const SidebarLink = ({ link }) => {
+type Props = {
+  link: {
+    icon: React.ReactNode;
+    text: string;
+    path: string;
+  };
+};
+
+const SidebarLink: React.FC<Props> = ({ link }) => {
   const [t] = useTranslation();
 
   return (
