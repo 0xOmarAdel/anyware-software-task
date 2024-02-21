@@ -42,3 +42,7 @@ body {
   font-weight: 500;
   background-color: #e5e7eb;
 }
+
+li.MuiTimelineItem-positionRight:before {
+  display: none;
+}
