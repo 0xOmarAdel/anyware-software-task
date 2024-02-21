@@ -3,7 +3,15 @@ const { NotFoundError } = require("../errors");
 const Quiz = require("../models/Quiz");
 
 const getAllQuizzes = async (req, res) => {
-  const quizzes = await Quiz.find().sort("createdAt");
+  const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+
+  const query = Quiz.find().sort({ createdAt: -1 });
+
+  if (limit) {
+    query.limit(limit);
+  }
+
+  const quizzes = await query.exec();
 
   res.status(StatusCodes.OK).json({ quizzes, count: quizzes.length });
 };
