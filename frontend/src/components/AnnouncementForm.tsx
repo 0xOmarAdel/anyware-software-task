@@ -3,16 +3,71 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import { useAxios } from "hookverse";
+import AnnouncementType from "../types/AnnouncementType";
 
-const AnnouncementForm = () => {
-  const [t] = useTranslation();
+type Props = {
+  selectedAnnouncement: AnnouncementType | null;
+  setSelectedAnnouncement: React.Dispatch<
+    React.SetStateAction<AnnouncementType | null>
+  >;
+  addAnnouncement: (newAnnouncement: AnnouncementType) => void;
+  updateAnnouncement: (
+    _id: AnnouncementType["_id"],
+    newText: AnnouncementType["text"]
+  ) => void;
+};
 
-  const [title, setTitle] = useState("");
+const AnnouncementForm: React.FC<Props> = ({
+  selectedAnnouncement,
+  setSelectedAnnouncement,
+  addAnnouncement,
+  updateAnnouncement,
+}) => {
+  const [text, setText] = useState("");
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    setText(selectedAnnouncement?.text || "");
+  }, [selectedAnnouncement]);
+
+  const { data: newAnnouncement, runAxios: createAnnouncement } = useAxios({
+    url: `${import.meta.env.VITE_API_URL}/announcement`,
+    method: "POST",
+    body: { text },
+  });
+
+  useEffect(() => {
+    if (newAnnouncement) {
+      addAnnouncement(newAnnouncement);
+    }
+  }, [newAnnouncement, addAnnouncement]);
+
+  const { data: updatedAnnouncement, runAxios: patchAnnouncement } = useAxios({
+    url: `${import.meta.env.VITE_API_URL}/announcement/${
+      selectedAnnouncement?._id
+    }`,
+    method: "PATCH",
+    body: { text },
+  });
+
+  useEffect(() => {
+    if (updatedAnnouncement) {
+      updateAnnouncement(updatedAnnouncement._id, updatedAnnouncement.text);
+    }
+  }, [updatedAnnouncement, updateAnnouncement]);
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (selectedAnnouncement) {
+      await patchAnnouncement();
+      setSelectedAnnouncement(null);
+    } else {
+      await createAnnouncement();
+    }
+
+    setText("");
   };
 
   return (
@@ -22,6 +77,7 @@ const AnnouncementForm = () => {
         paddingX: "1.25rem",
         paddingY: "3rem",
         borderRadius: "10px",
+        height: "fit-content",
       }}
     >
       <Typography
@@ -29,7 +85,7 @@ const AnnouncementForm = () => {
         component="h5"
         sx={{ fontWeight: "medium", textTransform: "capitalize" }}
       >
-        New Announcement
+        {selectedAnnouncement ? "Update Announcement" : "New Announcement"}
       </Typography>
       <form
         onSubmit={submitHandler}
@@ -42,14 +98,23 @@ const AnnouncementForm = () => {
             id="name"
             label="Announcement Title"
             variant="outlined"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             autoComplete="off"
             sx={{ flexGrow: 1, width: "250px" }}
           />
           <Button variant="contained" type="submit" fullWidth>
             Submit
           </Button>
+          {selectedAnnouncement && (
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => setSelectedAnnouncement(null)}
+            >
+              Cancel
+            </Button>
+          )}
         </Box>
       </form>
     </Paper>

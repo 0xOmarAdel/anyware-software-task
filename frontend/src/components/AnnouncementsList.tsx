@@ -1,8 +1,25 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import AnnouncementsTimeline from "./AnnouncementsTimeline";
+import AnnouncementType from "../types/AnnouncementType";
 
-const AnnouncementsList = () => {
+type Props = {
+  loading: boolean;
+  announcements: AnnouncementType[];
+  deleteAnnouncement?: (_id: AnnouncementType["_id"]) => void;
+  setSelectedAnnouncement?: React.Dispatch<
+    React.SetStateAction<AnnouncementType | null>
+  >;
+  displayActions?: boolean;
+};
+
+const AnnouncementsList: React.FC<Props> = ({
+  loading,
+  announcements,
+  deleteAnnouncement,
+  setSelectedAnnouncement,
+  displayActions,
+}) => {
   return (
     <Paper
       variant="outlined"
@@ -17,7 +34,16 @@ const AnnouncementsList = () => {
       <Typography variant="h5" component="h3" sx={{ fontWeight: 500 }}>
         Announcements
       </Typography>
-      <AnnouncementsTimeline />
+      {!loading && announcements ? (
+        <AnnouncementsTimeline
+          announcements={announcements}
+          deleteAnnouncement={deleteAnnouncement}
+          setSelectedAnnouncement={setSelectedAnnouncement}
+          displayActions={displayActions}
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
     </Paper>
   );
 };
