@@ -64,26 +64,43 @@ const QuizForm: React.FC<Props> = ({
     optionIndex: number,
     value: string
   ) => {
-    const updatedQuestions = [...questions];
-    updatedQuestions[questionIndex].options[optionIndex] = {
-      optionText: value,
-    };
-    setQuestions(updatedQuestions);
+    setQuestions((prevQuestions) => {
+      const updatedQuestions = [...prevQuestions];
+      updatedQuestions[questionIndex] = {
+        ...updatedQuestions[questionIndex],
+        options: updatedQuestions[questionIndex].options.map((option, idx) =>
+          idx === optionIndex ? { ...option, optionText: value } : option
+        ),
+      };
+      return updatedQuestions;
+    });
   };
 
+
   const handleAddQuestion = () => {
-    setQuestions([
-      ...questions,
-      {
-        questionText: "",
-        options: [
-          { optionText: "" },
-          { optionText: "" },
-          { optionText: "" },
-          { optionText: "" },
-        ],
-      },
-    ]);
+    const isCurrentQuestionEmpty =
+      questions[questions.length - 1].questionText.trim() === "" ||
+      questions[questions.length - 1].options.some(
+        (option) => option.optionText.trim() === ""
+      );
+
+    if (quizTitle && !isCurrentQuestionEmpty) {
+      setQuestions((prevQuestions) => {
+        const newOptions = Array.from({ length: 4 }, (_, optionIndex) => ({
+          _id: `op${prevQuestions.length + 1}-${optionIndex}`,
+          optionText: "",
+        }));
+
+        return [
+          ...prevQuestions,
+          {
+            _id: `q${prevQuestions.length + 1}`,
+            questionText: "",
+            options: newOptions,
+          },
+        ];
+      });
+    }
   };
 
   const { data: newQuiz, runAxios: createQuiz } = useAxios({
@@ -165,7 +182,7 @@ const QuizForm: React.FC<Props> = ({
       >
         <Box sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <TextField
-            id="name"
+            id="Quiz Title"
             label="Quiz Title"
             variant="outlined"
             value={quizTitle}
@@ -174,9 +191,12 @@ const QuizForm: React.FC<Props> = ({
             sx={{ flexGrow: 1, width: "250px" }}
           />
           {questions.map((question, questionIndex) => (
-            <div key={questionIndex}>
+            <Box
+              key={questionIndex}
+              sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            >
               <TextField
-                id="name"
+                id={`Question ${questionIndex + 1} Title`}
                 label={`Question ${questionIndex + 1} Title`}
                 variant="outlined"
                 value={question.questionText}
@@ -194,7 +214,7 @@ const QuizForm: React.FC<Props> = ({
               {question.options.map((option, optionIndex) => (
                 <TextField
                   key={optionIndex}
-                  id="name"
+                  id={`Option ${optionIndex + 1}`}
                   label={`Option ${optionIndex + 1}`}
                   variant="outlined"
                   value={option.optionText}
@@ -210,7 +230,7 @@ const QuizForm: React.FC<Props> = ({
                   sx={{ flexGrow: 1, width: "250px" }}
                 />
               ))}
-            </div>
+            </Box>
           ))}
           <Button variant="contained" onClick={handleAddQuestion} fullWidth>
             {t("addQuestion")}

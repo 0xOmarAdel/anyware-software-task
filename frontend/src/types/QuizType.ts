@@ -1,4 +1,5 @@
 export type OptionType = {
+  _id: string;
   optionText: string;
 };
 

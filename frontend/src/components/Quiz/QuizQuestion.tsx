@@ -4,11 +4,7 @@ import { styled } from "@mui/material/styles";
 import { QuizQuestionType } from "../../types/QuizType";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
   padding: `${theme.spacing(1)} ${theme.spacing(3)}`,
-  textAlign: "center",
-  color: theme.palette.text.secondary,
 }));
 
 type Props = {
