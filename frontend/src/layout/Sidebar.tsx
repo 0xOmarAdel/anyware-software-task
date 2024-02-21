@@ -3,8 +3,17 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import SidebarLink from "./SidebarLink";
+import { IoMdExit } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/slices/authSlice";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
     <Paper
       elevation={3}
@@ -35,6 +44,16 @@ const Sidebar = () => {
           {sidebarLinks.map((link) => (
             <SidebarLink key={link.id} link={link} />
           ))}
+          <li>
+            <button
+              onClick={logoutHandler}
+              className="sidebar-link"
+              style={{ width: "100%" }}
+            >
+              <IoMdExit style={{ fontSize: "1.5rem" }} />
+              Logout
+            </button>
+          </li>
         </ul>
       </nav>
     </Paper>

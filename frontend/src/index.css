@@ -43,6 +43,10 @@ body {
   background-color: #e5e7eb;
 }
 
+.sidebar-link .icon {
+  font-size: 1.25rem
+}
+
 li.MuiTimelineItem-positionRight:before {
   display: none;
 }
