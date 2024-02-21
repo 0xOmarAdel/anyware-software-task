@@ -9,7 +9,7 @@ const ExamsTips = () => {
   return (
     <Paper variant="outlined" sx={{ borderRadius: "10px" }}>
       <Grid container spacing={2} sx={{ width: "100%", margin: 0 }}>
-        <Grid xs={7} paddingX={3} paddingY={2}>
+        <Grid xs={7} paddingX={5} paddingY={3}>
           <Typography
             variant="h4"
             component="h2"
