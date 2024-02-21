@@ -1,4 +1,4 @@
-import Avatar from "../ui/Avatar";
+import Avatar from "../ui/UserAvatar";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import Paper from "@mui/material/Paper";

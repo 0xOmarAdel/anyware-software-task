@@ -52,7 +52,7 @@ const Sidebar = () => {
             <button
               onClick={logoutHandler}
               className="sidebar-link"
-              style={{ width: "100%" }}
+              style={{ width: "100%", background: "transparent" }}
             >
               <IoMdExit style={{ fontSize: "1.5rem" }} />
               {t("logout")}
@@ -63,12 +63,23 @@ const Sidebar = () => {
       <Stack
         direction="row"
         spacing={2}
-        sx={{ marginTop: "1rem", paddingX: "2.5rem", color: "white" }}
+        sx={{
+          marginTop: "1rem",
+          paddingX: "2.5rem",
+        }}
       >
-        <button onClick={() => i18n.changeLanguage("en")}>
+        <button
+          onClick={() => i18n.changeLanguage("en")}
+          style={{ color: "white", fontSize: "1rem" }}
+        >
           {t("english")}
         </button>
-        <button onClick={() => i18n.changeLanguage("ar")}>{t("arabic")}</button>
+        <button
+          onClick={() => i18n.changeLanguage("ar")}
+          style={{ color: "white", fontSize: "1rem" }}
+        >
+          {t("arabic")}
+        </button>
       </Stack>
     </Paper>
   );

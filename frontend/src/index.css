@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
-  @apply bg-gray-200;
+  background-color: #e5e7eb;
 }
 
 * {
@@ -11,6 +7,13 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto";
+  text-decoration: none;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .gradient-text {
@@ -44,7 +47,7 @@ body {
 }
 
 .sidebar-link .icon {
-  font-size: 1.25rem
+  font-size: 1.25rem;
 }
 
 li.MuiTimelineItem-positionRight:before {

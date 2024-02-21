@@ -1,18 +1,19 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import { Box } from "@mui/material";
 
 const MainLayout = () => {
   return (
-    <div className="flex flex-row">
+    <Box sx={{ display: "flex", flexDirection: "row" }}>
       <Sidebar />
-      <div className="grow">
+      <Box style={{ flexGrow: 1 }}>
         <Navbar />
-        <div className="p-5">
+        <Box sx={{ padding: "1.25rem" }}>
           <Outlet />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
