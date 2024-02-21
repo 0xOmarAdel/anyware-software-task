@@ -37,7 +37,7 @@ button {
 
 .sidebar-link:hover {
   color: #48a296;
-  background-color: #e5e7eb;
+  background-color: #e5e7eb !important;
 }
 
 .sidebar-link.active {
