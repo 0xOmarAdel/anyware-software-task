@@ -9,7 +9,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, { payload }) => {
-      state.user = payload.name;
+      state.user = payload.name || "Guest";
     },
     logout: (state) => {
       state.user = null;
