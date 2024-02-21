@@ -10,7 +10,6 @@
   "announcements": "Announcements",
   "quizzes": "Quizzes",
   "logout": "Logout",
-  "welcome ": "Welcome",
   "name": "Name",
   "password": "Password",
   "exams": "EXAMS TIME",
@@ -28,5 +27,6 @@
   "announcementTitle": "Announcement Title",
   "quizTitle": "Quiz Title",
   "startQuiz": "Start Quiz",
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "welcomeUser": "Welcome"
 }

@@ -65,8 +65,10 @@ const Sidebar = () => {
         spacing={2}
         sx={{ marginTop: "1rem", paddingX: "2.5rem", color: "white" }}
       >
-        <button onClick={() => i18n.changeLanguage("en")}>English</button>
-        <button onClick={() => i18n.changeLanguage("ar")}>Arabic</button>
+        <button onClick={() => i18n.changeLanguage("en")}>
+          {t("english")}
+        </button>
+        <button onClick={() => i18n.changeLanguage("ar")}>{t("arabic")}</button>
       </Stack>
     </Paper>
   );

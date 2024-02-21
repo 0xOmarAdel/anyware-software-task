@@ -36,7 +36,8 @@ const Navbar = () => {
             fontSize: "1.875rem",
           }}
         >
-          {t("welcome")} {user},
+          <span>{t("welcomeUser")}</span>
+          {" " + user},
         </Typography>
         <Avatar />
       </Stack>
