@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import Card from "../ui/Card";
-import Input from "../ui/Input";
-import Button from "../ui/Button";
 import { login } from "../store/slices/authSlice";
 import { useTranslation } from "react-i18next";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const Login = () => {
   const [t] = useTranslation();
@@ -21,34 +23,73 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-row justify-center items-center">
-      <Card className="!py-12">
-        <h2 className="text-2xl text-gray-600 font-medium capitalize">
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          paddingX: "1.25rem",
+          paddingY: "3rem",
+          textAlign: "center",
+          borderRadius: "10px",
+        }}
+      >
+        <Typography
+          variant="h5"
+          component="h2"
+          sx={{ fontWeight: "medium", textTransform: "capitalize" }}
+        >
           {t("login")}
-        </h2>
-        <form className="mt-8 flex flex-col gap-6" onSubmit={submitHandler}>
-          <div className="flex flex-col gap-4">
-            <Input
-              type="text"
+        </Typography>
+
+        <form
+          onSubmit={submitHandler}
+          style={{
+            marginTop: "2rem",
+          }}
+        >
+          <Box
+            sx={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            width="220px"
+          >
+            <TextField
               id="name"
-              name="name"
-              placeholder="Name"
+              label="Name"
+              variant="outlined"
               value={name}
-              onChange={setName}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="off"
+              size="small"
             />
-            <Input
-              type="password"
+            <TextField
               id="password"
-              name="password"
-              placeholder="*******"
+              label="Password"
+              variant="outlined"
+              type="password"
               value={password}
-              onChange={setPassword}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="off"
+              size="small"
             />
-          </div>
-          <Button text={t("login")} type="submit" />
+          </Box>
+          <Button
+            variant="contained"
+            type="submit"
+            fullWidth
+            sx={{ marginTop: "1.5rem" }}
+          >
+            {t("login")}
+          </Button>
         </form>
-      </Card>
-    </div>
+      </Paper>
+    </Box>
   );
 };
 
