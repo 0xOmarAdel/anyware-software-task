@@ -1,21 +1,43 @@
 import Avatar from "../ui/Avatar";
-import SearchInput from "../ui/SearchInput";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 const Navbar = () => {
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
-    <nav className="bg-gray-100 py-4 px-10 flex flex-row justify-between">
-      <span className="text-3xl text-gray-500 font-semibold">
-        Welcome {user},
-      </span>
-      <div className="flex flex-row items-center gap-10">
-        <SearchInput />
+    <Paper
+      elevation={0}
+      square
+      sx={{
+        padding: "1rem 2.5rem",
+      }}
+    >
+      <Stack
+        direction="row"
+        sx={{
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <Typography
+          variant="h5"
+          component="span"
+          sx={{
+            fontWeight: "700",
+            color: "rgb(107 114 128)",
+            fontSize: "1.875rem",
+          }}
+        >
+          Welcome {user},
+        </Typography>
         <Avatar />
-      </div>
-    </nav>
+      </Stack>
+    </Paper>
   );
 };
 
