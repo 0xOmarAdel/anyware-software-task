@@ -7,7 +7,6 @@ import { IoMdExit } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/slices/authSlice";
 import { useTranslation } from "react-i18next";
-import Stack from "@mui/material/Stack";
 
 const Sidebar = () => {
   const [t, i18n] = useTranslation();
