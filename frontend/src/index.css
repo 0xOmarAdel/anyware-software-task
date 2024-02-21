@@ -12,3 +12,11 @@ body {
   box-sizing: border-box;
   font-family: "Roboto";
 }
+
+.gradient-text {
+  width: fit-content;
+  background: linear-gradient(to right, #274e6b, #93c0bb);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
