@@ -39,7 +39,7 @@ const Quizzes = () => {
   }, []);
 
   return (
-    <Stack direction="row" spacing={5}>
+    <Stack direction={{ xs: "column", md: "row" }} spacing={5}>
       <QuizzesList
         quizzes={quizzes}
         loading={loading}

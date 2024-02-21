@@ -30,7 +30,7 @@ const AnnouncementsList: React.FC<Props> = ({
         borderRadius: "10px",
         paddingX: 5,
         paddingY: 3,
-        height: "100%",
+        height: "fit-content",
         flexGrow: 1,
       }}
     >

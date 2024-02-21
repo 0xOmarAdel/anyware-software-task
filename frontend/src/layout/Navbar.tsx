@@ -25,6 +25,7 @@ const Navbar = () => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
+          display: { xs: "none", md: "flex" },
         }}
       >
         <Typography
@@ -41,6 +42,18 @@ const Navbar = () => {
         </Typography>
         <Avatar />
       </Stack>
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{
+          fontWeight: "600",
+          letterSpacing: "0.025em",
+          display: { xs: "block", md: "none" },
+          color: "rgb(107 114 128)",
+        }}
+      >
+        Coligo
+      </Typography>
     </Paper>
   );
 };

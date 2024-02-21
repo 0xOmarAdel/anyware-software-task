@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Box } from "@mui/material";
 
 type Props = {
   link: {
@@ -19,7 +20,7 @@ const SidebarLink: React.FC<Props> = ({ link }) => {
         className={({ isActive }) => `sidebar-link ${isActive && "active"}`}
       >
         {link.icon}
-        {t(link.text)}
+        <Box sx={{ display: { xs: "none", md: "block" } }}>{t(link.text)}</Box>
       </NavLink>
     </li>
   );

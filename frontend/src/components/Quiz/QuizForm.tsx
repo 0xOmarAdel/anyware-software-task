@@ -213,8 +213,8 @@ const QuizForm: React.FC<Props> = ({
               />
               {question.options.map((option, optionIndex) => (
                 <TextField
-                  key={optionIndex}
-                  id={`Option ${optionIndex + 1}`}
+                  key={option._id}
+                  id={option._id}
                   label={`Option ${optionIndex + 1}`}
                   variant="outlined"
                   value={option.optionText}

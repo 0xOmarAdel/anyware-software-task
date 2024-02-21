@@ -24,7 +24,7 @@ const Sidebar = () => {
       square
       sx={{
         minHeight: "100vh",
-        width: "16rem",
+        width: { xs: "fit-content", md: "16rem" },
         backgroundImage: "linear-gradient(to bottom, #12567b, #398593)",
         display: "flex",
         flexDirection: "column",
@@ -38,6 +38,7 @@ const Sidebar = () => {
             fontWeight: "600",
             color: "white",
             letterSpacing: "0.025em",
+            display: { xs: "none", md: "block" },
           }}
         >
           Coligo
@@ -55,17 +56,21 @@ const Sidebar = () => {
               style={{ width: "100%", background: "transparent" }}
             >
               <IoMdExit style={{ fontSize: "1.5rem" }} />
-              {t("logout")}
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                {t("logout")}
+              </Box>
             </button>
           </li>
         </ul>
       </nav>
-      <Stack
-        direction="row"
-        spacing={2}
+      <Box
         sx={{
-          marginTop: "1rem",
-          paddingX: "2.5rem",
+          paddingX: { md: "2.5rem" },
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          flexWrap: "wrap",
+          gap: "1rem",
+          justifyContent: { xs: "center", md: "left" },
         }}
       >
         <button
@@ -80,7 +85,7 @@ const Sidebar = () => {
         >
           {t("arabic")}
         </button>
-      </Stack>
+      </Box>
     </Paper>
   );
 };

@@ -104,7 +104,7 @@ const AnnouncementForm: React.FC<Props> = ({
             value={text}
             onChange={(e) => setText(e.target.value)}
             autoComplete="off"
-            sx={{ flexGrow: 1, width: "250px" }}
+            sx={{ flexGrow: 1, width: { md: "250px" } }}
           />
           <Button variant="contained" type="submit" fullWidth>
             {t("submit")}

@@ -1,11 +1,21 @@
 import SingleQuiz from "./SingleQuiz";
+import QuizType from "../types/QuizType";
 
-const QuizList = () => {
+type Props = {
+  quizzes: QuizType[];
+};
+
+const QuizList: React.FC<Props> = ({ quizzes }) => {
   return (
-    <div>
-      <SingleQuiz />
-      <SingleQuiz />
-    </div>
+    <>
+      {quizzes.map((quiz, index) => (
+        <SingleQuiz
+          key={quiz._id}
+          quiz={quiz}
+          lastElement={index + 1 === quizzes.length}
+        />
+      ))}
+    </>
   );
 };
 
