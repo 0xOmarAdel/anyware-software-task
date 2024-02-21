@@ -1,10 +1,12 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { Box } from "@mui/material";
+import AuthHOC from "../components/AuthHOC";
 
-const MainLayout = () => {
-  return (
+const MainLayout: React.FC = () => {
+  const AuthenticatedLayout = AuthHOC(() => (
     <Box sx={{ display: "flex", flexDirection: "row" }}>
       <Sidebar />
       <Box style={{ flexGrow: 1 }}>
@@ -14,7 +16,9 @@ const MainLayout = () => {
         </Box>
       </Box>
     </Box>
-  );
+  ));
+
+  return <AuthenticatedLayout />;
 };
 
 export default MainLayout;
