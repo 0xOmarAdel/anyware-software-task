@@ -1,36 +1,43 @@
-import { NavLink } from "react-router-dom";
 import sidebarLinks from "../data/sidebarLinks";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import SidebarLink from "./SidebarLink";
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-64 bg-primary-gradient flex flex-col shadow-xl drop-shadow-xl">
-      <div className="mx-auto py-10">
-        <span className="text-3xl text-white font-semibold tracking-wide">
+    <Paper
+      elevation={3}
+      square
+      sx={{
+        minHeight: "100vh",
+        width: "16rem",
+        backgroundImage: "linear-gradient(to bottom, #12567b, #398593)",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Box marginX="auto" paddingY="2.5rem">
+        <Typography
+          variant="h4"
+          component="h2"
+          sx={{
+            fontWeight: "600",
+            color: "white",
+            letterSpacing: "0.025em",
+          }}
+        >
           Coligo
-        </span>
-      </div>
-      <nav className="mt-2">
+        </Typography>
+      </Box>
+      <nav style={{ marginTop: "0.5rem" }}>
         <ul>
           {sidebarLinks.map((link) => (
-            <li key={link.id}>
-              <NavLink
-                to={link.path}
-                className={({ isActive }) =>
-                  `py-4 px-10 flex flex-row items-center gap-3 text-lg tracking-wide ${
-                    isActive
-                      ? "bg-gray-200 text-primary font-medium"
-                      : "text-gray-200 transition duration-300 hover:bg-gray-200 hover:text-primary"
-                  }`
-                }
-              >
-                {link.icon}
-                {link.text}
-              </NavLink>
-            </li>
+            <SidebarLink key={link.id} link={link} />
           ))}
         </ul>
       </nav>
-    </div>
+    </Paper>
   );
 };
 
