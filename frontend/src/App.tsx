@@ -4,6 +4,8 @@ import { RootState } from "./store/store";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import MainLayout from "./layout/MainLayout";
+import Announcements from "./pages/Announcements";
+import Quizzes from "./pages/Quizzes";
 
 const App: React.FC = () => {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -16,6 +18,8 @@ const App: React.FC = () => {
       />
       <Route element={user ? <MainLayout /> : <Navigate to="/" />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/announcements" element={<Announcements />} />
+        <Route path="/quizzes" element={<Quizzes />} />
       </Route>
     </Routes>
   );
