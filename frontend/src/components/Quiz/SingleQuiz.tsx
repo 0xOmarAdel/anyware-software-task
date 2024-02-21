@@ -28,7 +28,7 @@ const SingleQuiz: React.FC<Props> = ({ quiz, deleteQuiz, setSelectedQuiz }) => {
       <AccordionDetails>
         <Stack direction="column" spacing={2}>
           {quiz.questions.map((question) => (
-            <QuizQuestion question={question} />
+            <QuizQuestion key={question._id} question={question} />
           ))}
         </Stack>
         <Stack direction="row" spacing={2} sx={{ marginTop: "1rem" }}>

@@ -3,6 +3,7 @@ export type OptionType = {
 };
 
 export type QuizQuestionType = {
+  _id: string;
   questionText: string;
   options: OptionType[];
 };

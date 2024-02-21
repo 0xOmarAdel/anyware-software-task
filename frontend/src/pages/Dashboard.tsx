@@ -29,10 +29,10 @@ const Dashboard = () => {
     <>
       <ExamsTips />
       <Grid container sx={{ width: "100%", margin: "1.5rem 0 0 0" }}>
-        <Grid xs={9}>
+        <Grid xs={9} item>
           <AnnouncementsList loading={loading} announcements={announcements!} />
         </Grid>
-        <Grid xs={3}>
+        <Grid xs={3} item>
           <NewQuizzes />
         </Grid>
       </Grid>

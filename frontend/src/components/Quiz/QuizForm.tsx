@@ -7,15 +7,12 @@ import Button from "@mui/material/Button";
 import { useAxios } from "hookverse";
 import QuizType from "../../types/QuizType";
 import { useTranslation } from "react-i18next";
-
-type Option = {
-  optionText: string;
-};
+import { OptionType } from "../../types/QuizType";
 
 interface Question {
   questionText: string;
-  options: Option[];
-  [key: string]: string | Option[];
+  options: OptionType[];
+  [key: string]: string | OptionType[];
 }
 
 type Props = {
@@ -26,12 +23,13 @@ type Props = {
 };
 
 const defaultQuestion = {
+  _id: "q1",
   questionText: "",
   options: [
-    { optionText: "" },
-    { optionText: "" },
-    { optionText: "" },
-    { optionText: "" },
+    { _id: "op1", optionText: "" },
+    { _id: "op2", optionText: "" },
+    { _id: "op3", optionText: "" },
+    { _id: "op4", optionText: "" },
   ],
 };
 
@@ -176,9 +174,8 @@ const QuizForm: React.FC<Props> = ({
             sx={{ flexGrow: 1, width: "250px" }}
           />
           {questions.map((question, questionIndex) => (
-            <>
+            <div key={questionIndex}>
               <TextField
-                key={questionIndex}
                 id="name"
                 label={`Question ${questionIndex + 1} Title`}
                 variant="outlined"
@@ -196,6 +193,7 @@ const QuizForm: React.FC<Props> = ({
               />
               {question.options.map((option, optionIndex) => (
                 <TextField
+                  key={optionIndex}
                   id="name"
                   label={`Option ${optionIndex + 1}`}
                   variant="outlined"
@@ -212,7 +210,7 @@ const QuizForm: React.FC<Props> = ({
                   sx={{ flexGrow: 1, width: "250px" }}
                 />
               ))}
-            </>
+            </div>
           ))}
           <Button variant="contained" onClick={handleAddQuestion} fullWidth>
             {t("addQuestion")}

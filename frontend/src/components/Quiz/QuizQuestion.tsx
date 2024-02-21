@@ -20,8 +20,8 @@ const QuizQuestion: React.FC<Props> = ({ question }) => {
     <Stack direction="column" spacing={1}>
       <p>{question.questionText}</p>
       <Stack direction="row" spacing={2}>
-        {question.options.map((option) => (
-          <Item>{option.optionText}</Item>
+        {question.options.map((option, optionIndex) => (
+          <Item key={optionIndex}>{option.optionText}</Item>
         ))}
       </Stack>
     </Stack>
