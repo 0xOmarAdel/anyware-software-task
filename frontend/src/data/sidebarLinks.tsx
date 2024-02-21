@@ -4,6 +4,7 @@ import {
   FaBook,
   FaGraduationCap,
   FaBullhorn,
+  FaHourglassHalf,
 } from "react-icons/fa6";
 import { BsGraphUpArrow } from "react-icons/bs";
 
@@ -43,6 +44,12 @@ const sidebarLinks = [
     text: "Announcements",
     path: "/announcements",
     icon: <FaBullhorn className="text-xl" />,
+  },
+  {
+    id: 7,
+    text: "Quizzes",
+    path: "/quizzes",
+    icon: <FaHourglassHalf className="text-xl" />,
   },
 ];
 
